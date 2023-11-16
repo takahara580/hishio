@@ -1,16 +1,28 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Portfolio</title>
+    <title>Hishio</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <header>
+        <% if customer_signed_in? %>
+          <%= render 'layouts/header_customer' %>
+        <% elsif admin_signed_in? %>
+          <%= render 'layouts/header_admin' %>
+        <% else %>
+          <%= render 'layouts/header_logout' %>
+        <% end %>
+    </header>
     <%= yield %>
+    <div>
+      <%= flash[:success] %>
+      <%= flash[:danger] %>
+    </div>
   </body>
 </html>
