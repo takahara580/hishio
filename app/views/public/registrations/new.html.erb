@@ -1,29 +1,70 @@
-<h2>Sign up</h2>
+<div class='container mt-5'>
+  <h2 class='text-left ml-5 mb-md-3 mb-lg-5'>
+    <span class=' p-2'>新規会員登録</span>
+  </h2>
+ <p class="text-center text-danger"><span class="bg-warning"><%= flash[:notice] %></span></p>
+  <div>
+  
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <div class="row my-3">
+      <div class="col-2 offset-md-2"><%= f.label "名前" %></div>
+      <div class="col-1 text-right"><%= f.label "(姓)" %></div>
+      <div class="col-3"><%= f.text_field :last_name, class: 'form-control', placeholder: "令和" %></div>
+      <div class="col-1 text-right"><%= f.label "(名)" %></div>
+      <div class="col-3"><%= f.text_field :first_name, class: 'form-control', placeholder: "道子" %></div>
+    </div>
+    <div class="row my-3">
+      <div class="col-2 offset-md-2"><%= f.label "フリガナ" %></div>
+      <div class="col-1 text-right"><%= f.label "(セイ)" %></div>
+      <div class="col-3"><%= f.text_field :last_name_kana, class: 'form-control', placeholder: "レイワ" %></div>
+      <div class="col-1 text-right"><%= f.label "(メイ)" %></div>
+      <div class="col-3"><%= f.text_field :first_name_kana, class: 'form-control', placeholder: "ミチコ" %></div>
+    </div>
+    <div class="row my-3">
+      <div class="col-3 offset-md-2"><%= f.label "メールアドレス" %></div>
+      <div class="col-3"><%= f.email_field :email, class: 'form-control', placeholder: "sample@example.com" %></div>
+    </div>
+    <div class="row my-3">
+      <div class="col-3 offset-md-2"><%= f.label "郵便番号(ハイフンなし)" %></div>
+      <div class="col-3"><%= f.text_field :zip_code, class: 'form-control', placeholder: "1001000" %></div>
+    </div>
+    <div class="row my-3">
+      <div class="col-3 offset-md-2"><%= f.label "住所" %></div>
+      <div class="col-5"><%= f.text_field :address, class: 'form-control', placeholder: "東京都渋谷区代々木神園町0-0" %></div>
+    </div>
+    <div class="row my-3">
+      <div class="col-3 offset-md-2"><%= f.label "電話番号(ハイフンなし)" %></div>
+      <div class="col-3"><%= f.text_field :phone_number, class: 'form-control', placeholder: "08012345678" %></div>
+    </div>
+    <div class="row my-3">
+      <div class="col-3 offset-md-2">
+        <% if @minimum_password_length %>
+          <%= f.label "パスワード(#{@minimum_password_length}文字以上)" %>
+        <% end %>
+      </div>
+      <div class="col-3"><%= f.password_field :password, class: 'form-control'%></div>
+    </div>
+    <div class="row">
+      <div class="col-3 offset-md-2"><%= f.label "パスワード(確認用)" %></div>
+      <div class="col-3"><%= f.password_field :password_confirmation, class: 'form-control'%></div>
+    </div>
+    <div class="row">
+      <div class="col-2 offset-md-5 my-3">
+        <%= f.submit "　新規登録　", class:"col btn btn-success" %>
+      </div>
+    </div>
+  <% end %>
+  
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "publics/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      <div class='col-sm-12'>
+        <h5 class="mb-4">
+        <span class='p-2'>既に登録済みの方</span>
+        </h5>
+      </div>
+      <div class='col-sm-12 text-center'>
+        <div class="mt-4">
+        <span><%= link_to 'こちら', new_customer_session_path %>からログインしてください</span>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "public/shared/links" %>
