@@ -1,11 +1,16 @@
 class OrderDetail < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
-         
   belongs_to :order
   belongs_to :item
-         
-  enum item_status: {"入金待ち" => 1,"準備中" => 2,"出荷準備完了" =>3,}
+  
+  enum creating_status: {
+      "着手不可" => 0,
+      "製作待ち" => 1,
+      "製作中" => 2,
+      "製作完了" =>3,
+  }
+  
+  def subtotal
+    non_taxed_price * amount
+  end
+
 end

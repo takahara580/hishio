@@ -1,0 +1,94 @@
+<% content_for(:body_attributes) do %>
+   data-turbolinks="false"
+<% end %>
+
+<div class="container">
+  <div class="row mt-5 mx-auto">
+</div>
+    <div class="col-md-4 headline">
+      <h4>注文情報確認</h4>
+    </div>
+
+  <div clss="row-12 mt-4 mx-auto">
+    <div class="col-md-12 mx-auto">
+    <table class="table table-inverse table-bordered custom-table", style="border-color: #3C2A21;">
+      <thead>
+        <tr align="center">
+          <th scope="col" style="width: 40%;">商品名</th>
+          <th scope="col" style="width: 20%;">単価(税込)</th>
+          <th scope="col" style="width: 20%;">数量</th>
+          <th scope="col" style="width: 20%;">小計</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% total = 0 %>
+        <% @cart_items.each do |cart_item| %>
+        <tr id="cart_item">
+          <td class="align-middle"><%= image_tag cart_item.item.image, size: "180x140" %><%=cart_item.item.name %></td>
+          <td class="align-middle text-center"><%= (cart_item.item.non_taxed_price*1.1).floor.to_s(:delimited) %>円</td>
+          <td class="align-middle text-center"><%= cart_item.amount %></td>
+          <!--<td class="align-middle subtotal-area text-center">-->
+          <!--</td>-->
+          <td class="align-middle subtotal-area text-center"><%= (cart_item.item.non_taxed_price * 1.1 * cart_item.amount).floor.to_s(:delimited) %>円</td>
+          <% total += cart_item.item.non_taxed_price * cart_item.amount %>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-md-3 indexx-amount ml-auto">
+  <table class="table table-inverse table-bordered", style="border-color: #3C2A21;">
+      <tbody>
+       <tr>
+         <th style="backgroud-color: rgba(60, 42, 33, 0.5);">送料</th>
+         <td class="text-center"><%= @order.postage %>円</td>
+       </tr>
+       <tr>
+         <th style="backgroud-color: rgba(60, 42, 33, 0.5);">商品合計</th>
+         <!--<td class="text-center"><%#= @order_total_amount.to_s(:delimited) %>円</td>-->
+       <td class="text-center"><%= (total * 1.1).floor.to_s(:delimited)%>円
+       </tr>
+       <tr>
+         <th style="backgroud-color: rgba(60, 42, 33, 0.5);">請求金額</th>
+          <!--<td class="text-center"><%#= @order_total_amount.to_s(:delimited) %>円</td>-->
+          <td class="text-center"><%= (total * 1.1 + @order.postage).floor.to_s(:delimited) %>円</td>
+       </tr>
+      </tbody>
+  </table>
+  </div>
+</div>
+
+<div class="row justify-content-center mt-4 mx-auto">
+  <div class="col-md-2">
+    <h5><strong>支払方法</strong></h5>
+  </div>
+  <div class="col-md-8">
+    <%= @order.payment_method %>
+  </div>
+</div>
+
+<div class="row justify-content-center mt-4 mx-auto">
+  <div class="col-md-2">
+    <h5><strong>お届け先</strong></h5>
+  </div>
+<div class="col-md-8">
+  〒<%= @order.zip_code + @order.address %><br>
+  <%= @order.name %>
+</div>
+</div>
+
+<div class="row mt-5">
+ <div class="col text-center">
+  <%= form_with model: @order, url: orders_complete_path, method: :post do |f| %>
+   <%= f.hidden_field :name,:value =>@order.name %>
+   <%= f.hidden_field :zip_code,:value =>@order.zip_code %>
+   <%= f.hidden_field :address,:value =>@order.address %>
+   <%= f.hidden_field :postage,:value =>@order.postage %>
+   <%= f.hidden_field :billing_amount,:value => total + @order.postage %>
+   <%= f.hidden_field :payment_method,:value =>@order.payment_method %>
+
+  <%= f.submit '注文を確定する', class: 'btn', style: "background-color: #1A120B; color: #E5E5CB;", data: { confirm: "注文確定をします。よろしいですか？" } %>
+  <% end %>
+ </div>
+</div>
+</div>
