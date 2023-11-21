@@ -11,14 +11,18 @@ Admin.create(email: '321@gmail.com',
 ["赤味噌","白味噌","濃口醬油","薄口醬油"].each do |name|
   Genre.create(name: name)
 end
-            
-Item.create!(genre_id: '1',
-            name: '長崎県産　麦味噌',
-            text: '麦味噌です',
-            is_active: 'true',
-            non_taxed_price: '400',
-            image: ActiveStorage::Blob.create_and_upload!(io: File.open(Rails.root.join("app/assets/images/miso.png")),filename: 'miso.png')
-            )
+
+item = Item.create!(
+  genre_id: '1',
+  name: '長崎県産　麦味噌',
+  text: '麦味噌です',
+  is_active: true, # 'true'ではなくtrueに修正
+  non_taxed_price: '400',
+)
+
+# 画像の添付
+file_path = Rails.root.join("app/assets/images/miso.png")
+item.item_image.attach(io: File.open(file_path), filename: 'miso.png')
             
 Customer.create(last_name: '田中',
                 first_name: '愛子',

@@ -47,6 +47,8 @@ end
     resources :addresses, only:[:index, :edit, :create, :update, :destroy]
     resources :genres, only: [:show], as: "customers_genres", path: "customers/genres"
   end
+  
+
 
 
 end

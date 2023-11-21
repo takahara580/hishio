@@ -10,7 +10,7 @@
     <% @items.each do |item| %>
  　　<%= link_to item_path(item.id) do %>
     <div class="thumbnail item-thumbnail col-xs-2">
-     <%= image_tag item.image, size:'300x200' %>
+     <%= image_tag item.item_image, size: '300x200' %>
      <div class="item detail">
       <p><%= item.name %></p>
       <p><%= "#{item.non_taxed_price}円" %></p>

@@ -24,7 +24,7 @@
         <% total = 0 %>
         <% @cart_items.each do |cart_item| %>
         <tr id="cart_item">
-          <td class="align-middle"><%= image_tag cart_item.item.image, size: "180x140" %><%=cart_item.item.name %></td>
+          <td class="align-middle"><%= image_tag cart_item.item.item_image, size: "180x140" %><%=cart_item.item.name %></td>
           <td class="align-middle text-center"><%= (cart_item.item.non_taxed_price*1.1).floor.to_s(:delimited) %>円</td>
           <td class="align-middle text-center"><%= cart_item.amount %></td>
           <!--<td class="align-middle subtotal-area text-center">-->
