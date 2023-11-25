@@ -12,8 +12,13 @@ Admin.create(email: '321@gmail.com',
   Genre.create(name: name)
 end
 
+["東北","九州"].each do |name|
+  ProducingArea.create(name: name)
+end
+
 item = Item.create!(
   genre_id: '1',
+  producing_area_id: '1',
   name: '長崎県産　麦味噌',
   text: '麦味噌です',
   is_active: true, # 'true'ではなくtrueに修正

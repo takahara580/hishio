@@ -30,6 +30,10 @@
             <td><%= @item.genre.name %></td>
           </tr>
           <tr>
+            <th style="width: 30%;">生産地</th>
+            <td><%= @item.producing_area&.name %></td>
+          </tr>
+          <tr>
             <th>税込価格(税抜価格)</th>
             <td><%= (@item.non_taxed_price * 1.1).to_i %>(<%= @item.non_taxed_price %>)円</td>
           </tr>

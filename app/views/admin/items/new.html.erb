@@ -25,6 +25,10 @@
               <td><%= f.collection_select :genre_id, Genre.all, :id, :name, { include_blank: "--選択して下さい--"}, {class: "form-control"} %></td>
             </tr>
             <tr>
+              <th><%= f.label :producing_area_id, "生産地" %></th>
+              <td><%= f.collection_select :producing_area_id, ProducingArea.all, :id, :name, { include_blank: "--選択して下さい--"}, {class: "form-control"} %></td>
+            </tr>
+            <tr>
               <th><%= f.label :non_taxed_price, "税抜価格" %></th>
               <td colspan="2"><%= f.number_field :non_taxed_price, :placeholder => "1000", class: "form-control" %></td>
               <td style="vertical-align: bottom;"><span>円</span></td>

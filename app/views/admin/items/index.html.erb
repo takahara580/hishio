@@ -17,6 +17,7 @@
       <th>商品名</th>
       <th>税抜き価格</th>
       <th>ジャンル</th>
+      <th>生産地</th>
       <th>ステータス</th>
     </tr>
   </thead>
@@ -31,6 +32,7 @@
       </td>
       <td><%= item.non_taxed_price.to_s(:delimited) %></td>
       <td><%= item.genre.name %></td>
+      <td><%= item.producing_area&.name %></td>
       <td>
         <% if item.is_active %>
           <strong style="color: green;">販売中</strong>

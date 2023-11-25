@@ -1,4 +1,5 @@
 class Public::CustomersController < ApplicationController
+  before_action :authenticate_customer!
   def  index
   end
 
@@ -28,6 +29,12 @@ class Public::CustomersController < ApplicationController
       redirect_to root_path
     end
   end 
+  
+  def favorites
+    @customer = current_customer
+    favorites = Favorite.where(customer_id: @customer.id).pluck(:item_id)
+    @favorite_items = Item.find(favorites)
+  end
 
 
 private

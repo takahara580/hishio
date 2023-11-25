@@ -12,6 +12,15 @@
           <span class='p-2'>会員の方はこちらからログイン</span>
         </h5>
       </div>
+      
+  <% if flash[:notice].present? %>
+    <div class="row my-3">
+      <div class="col-12 text-center">
+        <%= render "public/shared/error_messages", resource: resource %>
+        <p class="alert alert-warning"><%= flash[:notice] %></p>
+      </div>
+    </div>
+  <% end %>
 
   <%= form_with(model: resource, url: session_path(resource_name)) do |f| %>
 

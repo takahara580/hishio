@@ -1,4 +1,13 @@
 <div class="container mt-5">
+  <% if flash[:success] %>
+  <div class="alert alert-success">
+    <%= flash[:success] %>
+  </div>
+<% elsif flash[:danger] %>
+  <div class="alert alert-danger">
+    <%= flash[:danger] %>
+  </div>
+<% end %>
     
       <h4><span class="w-25 mt-5">配送先編集</span></h4>
     

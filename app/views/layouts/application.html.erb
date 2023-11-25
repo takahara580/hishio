@@ -9,7 +9,7 @@
   <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
   <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
   <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-  
+
 <body>
   <a id="pagetop" href="#" class="mobile-only"><i class="fa-solid fa-caret-up" style="color: #ffffff;"></i></a>
   <header>
@@ -24,6 +24,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto">
             <% if admin_signed_in? %>
+            <%= render 'layouts/admin_search' %>
               <li class='nav-item'>
                 <%= link_to '商品一覧', admin_items_path, class: 'btn btn-dark' %>
               </li>
@@ -40,7 +41,8 @@
                 <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: 'btn btn-dark' %>
               </li>
             <% elsif customer_signed_in? %>
-              <li class="text-primary mr-5 mt-2">ようこそ、<%= current_customer.last_name %>さん！</li>
+              <li class="mr-5 mt-2">ようこそ、<%= current_customer.last_name %>さん！</li>
+              <%= render "layouts/item_search" %>
               <li class="nav-item">
                 <%= link_to 'マイページ', customers_information_path, class: 'btn btn-dark' %>
               </li>
