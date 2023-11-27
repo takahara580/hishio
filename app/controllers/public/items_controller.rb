@@ -11,9 +11,10 @@ class Public::ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
-    @genres = Genre.all
-    @producing_areas = ProducingArea.all
+    @genre = Genre.all
+    @producing_area = ProducingArea.all
     @cart_item = CartItem.new
+    @item_comment = ItemComment.new
   end
 
   def create
@@ -27,8 +28,8 @@ class Public::ItemsController < ApplicationController
     items_per_page = 8
     @content = params[:content]
     @records = Item.search_for(@content).page(params[:page]).per(items_per_page)
-    @genres = Genre.all
-    @producing_areas = ProducingArea.all
+    @genre = Genre.all
+    @producing_area = ProducingArea.all
   end
 
 end

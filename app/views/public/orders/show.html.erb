@@ -1,89 +1,87 @@
 <div class="container mt-5">
-            <h2>注文履歴詳細</h2>
-            <div class="col-6" style="float: left;">
-                    <h3 class="font-weight-bold">注文情報</h3>
-                    <div class="order-table">
-                        <table class="table table-bordered">
-                            <tbody>
-                                <tr>
-                                    <td class="table-secondary w-25 border-dark">注文日</td>
-                                    <td class="border-dark"><%= @order.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
-                                </tr>
-                                <tr>
-                                    <td class="table-secondary border-dark">配送先</td>
-                                    <td class="border-dark">
-                                        〒<%= @order.zip_code %><br>
-				                        <%= @order.address %><br>
-				                        <%= @order.name %>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="table-secondary border-dark">支払方法</td>
-                                    <td class="border-dark"><%= @order.payment_method %></td>
-                                </tr>
-                                <tr>
-                                    <td class="table-secondary border-dark">ステータス</td>
-                                    <td class="border-dark"><%= @order.status %></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <div class="col-3" style="float: left;">
-                    <h3 class="font-weight-bold">請求情報</h3>
-                    <div class="billing-table">
-                        <table class="table table-bordered">
-                            <tbody>
-                                <tr>
-                                    <td class="table-secondary border-dark">商品合計</td>
-                                    <td class="border-dark"><%= (@order.order_details.sum { |order_detail| order_detail.price * 1.1 * order_detail.amount }).floor.to_s(:delimited) %>円</td>
-                                </tr>
-                                <tr>
-                                    <td class="table-secondary border-dark">配送料</td>
-                                    <td class="border-dark"><%= @order.postage %>円</td>
-                                </tr>
-                                <tr>
-                                    <td class="table-secondary border-dark">ご請求額</td>
-                                    <td class="border-dark"><%= (@order.postage.to_i + @order.order_details.sum { |order_detail| order_detail.price * 1.1 * order_detail.amount }).floor.to_s(:delimited) %>円</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-            <div class='container'>
-                <div class="col-6">
-                    <h3 class="font-weight-bold mb-0">注文内容</h3>
-                    <div class="order-detail-table">
-                        <table class="table table-bordered">
-                            <thead>
-                                <tr>
-                                    <td class="table-secondary border-dark font-weight-bold">商品</td>
-                                    <td class="table-secondary border-dark font-weight-bold text-center">単価（税込）</td>
-                                    <td class="table-secondary border-dark font-weight-bold text-center">個数</td>
-                                    <td class="table-secondary border-dark font-weight-bold text-center">小計</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <% if @order_details.present? %>
-                                <% @order.order_details.each do |order_detail| %>
-                                <tr>
-                                    <td><%= order_detail.item.name %></td>
-                                    <td><%= (order_detail.price*1.1).floor.to_s(:delimited) %>円</td>
-                                    <td><%= order_detail.amount %></td>
-                                    <td><%= (order_detail.price * 1.1 * order_detail.amount).floor.to_s(:delimited) %>円</td>
-                                </tr>
-                              <% end %>
-                              <% else %>
-                              <tr>
-                                  <td colspan="2">注文詳細はありません。</td>
-                              </tr>
-                              <% end %>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <h2>注文履歴詳細</h2>
+  <div class="col-6" style="float: left;">
+    <h3 class="font-weight-bold">注文情報</h3>
+    <div class="order-table">
+      <table class="table table-bordered">
+        <tbody>
+          <tr>
+            <td class="table-secondary w-25 border-dark">注文日</td>
+            <td class="border-dark"><%= @order.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
+          </tr>
+          <tr>
+            <td class="table-secondary border-dark">配送先</td>
+            <td class="border-dark">
+              〒<%= @order.zip_code %><br>
+              <%= @order.address %><br>
+              <%= @order.name %>
+            </td>
+          </tr>
+          <tr>
+            <td class="table-secondary border-dark">支払方法</td>
+            <td class="border-dark"><%= @order.payment_method %></td>
+          </tr>
+          <tr>
+            <td class="table-secondary border-dark">ステータス</td>
+            <td class="border-dark"><%= @order.status %></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
+  </div>
+  <div class="col-3" style="float: left;">
+    <h3 class="font-weight-bold">請求情報</h3>
+    <div class="billing-table">
+      <table class="table table-bordered">
+        <tbody>
+          <tr>
+            <td class="table-secondary border-dark">商品合計</td>
+            <td class="border-dark"><%= (@order.order_details.sum { |order_detail| order_detail.price * 1.1 * order_detail.amount }).floor.to_s(:delimited) %>円</td>
+          </tr>
+          <tr>
+            <td class="table-secondary border-dark">配送料</td>
+            <td class="border-dark"><%= @order.postage %>円</td>
+          </tr>
+          <tr>
+            <td class="table-secondary border-dark">ご請求額</td>
+            <td class="border-dark"><%= (@order.postage.to_i + @order.order_details.sum { |order_detail| order_detail.price * 1.1 * order_detail.amount }).floor.to_s(:delimited) %>円</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<div class='container'>
+  <div class="col-6">
+    <h3 class="font-weight-bold mb-0">注文内容</h3>
+    <div class="order-detail-table">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <td class="table-secondary border-dark font-weight-bold">商品</td>
+            <td class="table-secondary border-dark font-weight-bold text-center">単価（税込）</td>
+            <td class="table-secondary border-dark font-weight-bold text-center">個数</td>
+            <td class="table-secondary border-dark font-weight-bold text-center">小計</td>
+          </tr>
+        </thead>
+        <tbody>
+          <% if @order_details.present? %>
+            <% @order.order_details.each do |order_detail| %>
+              <tr>
+                <td class="border-dark"><%= order_detail.item.name %></td>
+                <td class="border-dark"><%= (order_detail.price*1.1).floor.to_s(:delimited) %>円</td>
+                <td class="border-dark"><%= order_detail.amount %></td>
+                <td class="border-dark"><%= (order_detail.price * 1.1 * order_detail.amount).floor.to_s(:delimited) %>円</td>
+              </tr>
+            <% end %>
+          <% else %>
+            <tr>
+              <td colspan="2">注文詳細はありません。</td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
 </div>

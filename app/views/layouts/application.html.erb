@@ -6,9 +6,17 @@
   <%= csp_meta_tag %>
   <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+
   <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+  <style>
+    body {
+      background-image: url('<%= asset_path("28061311_l.png") %>'); /* 画像のパスを指定 */
+      background-size: cover; /* 画像をウィンドウ全体に広げる */
+      background-position: center; /* 画像を中央に配置 */
+      /* その他のスタイルを追加できます */
+    }
+  </style>
 
 <body>
   <a id="pagetop" href="#" class="mobile-only"><i class="fa-solid fa-caret-up" style="color: #ffffff;"></i></a>
@@ -41,7 +49,7 @@
                 <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: 'btn btn-dark' %>
               </li>
             <% elsif customer_signed_in? %>
-              <li class="mr-5 mt-2">ようこそ、<%= current_customer.last_name %>さん！</li>
+              <li class="mr-5 mt-2 text-light">ようこそ、<%= current_customer.last_name %>さん！</li>
               <%= render "layouts/item_search" %>
               <li class="nav-item">
                 <%= link_to 'マイページ', customers_information_path, class: 'btn btn-dark' %>

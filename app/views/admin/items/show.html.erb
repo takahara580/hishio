@@ -45,9 +45,30 @@
               <td><strong style="color: gray;">販売停止中</strong></td>
             <% end %>
           </tr>
+          <tr>
+            <th style="width: 30%;">いいね数</th>
+            <td><%= @item.favorites.count %> いいね</td>
+          </tr>
         </tbody>
       </table>
       <%= link_to '編集する', edit_admin_item_path(@item), class:"btn btn-success ml-3" %>
     </div>
+<div class="col-8 mx-auto">
+  <div>
+    <p>コメント件数：<%= @item.item_comments.count %></p>
+    <div class="d-flex flex-column" style="height: 200px;">
+<% @item.item_comments.each do |item_comment| %>
+  <p>
+    <%= item_comment.customer.last_name %>　<%= item_comment.customer.first_name %>
+    <%= item_comment.created_at.strftime('%Y/%m/%d') %>
+  </p>
+  <%= item_comment.comment %>
+
+    <%= link_to "削除", item_item_comment_path(@item, item_comment), class: 'text-right', method: :delete %>
+<% end %>
+    </div>
+  </div>
+  
+</div>
   </div>
 </div>

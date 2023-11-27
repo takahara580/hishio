@@ -6,26 +6,26 @@
 <table class="table tabel-hover">
   <thead class="thead-light">
     <tr>
-      <th>会員ID</th>
-      <th>氏名</th>
-      <th>メールアドレス</th>
-      <th>ステータス</th>
+      <th class="table-secondary border-dark">会員ID</th>
+      <th class="table-secondary border-dark">氏名</th>
+      <th class="table-secondary border-dark">メールアドレス</th>
+      <th class="table-secondary border-dark">ステータス</th>
     </tr>
   </thead>
   <tbody>
     <% @customers.each do |customer| %>
     <tr>
-      <td> <%= customer.id %> </td>
-      <td>
+      <td class="border-dark"> <%= customer.id %> </td>
+      <td class="border-dark">
         <%= link_to admin_customer_path(customer) do %>
           <%= customer.last_name + customer.first_name %>
         <% end %>
       </td>
-      <td><%= customer.email %></td>
+      <td class="border-dark"><%= customer.email %></td>
       <% if customer.is_active == true %>
-        <td><strong style="color: green;">有効</strong></td>
+        <td class="border-dark"><strong style="color: green;">有効</strong></td>
       <% else %>
-        <td><strong style="color: gray;">退会済</strong></td>
+        <td class="border-dark"><strong style="color: gray;">退会済</strong></td>
       <% end %>
     </tr>
     <% end %>

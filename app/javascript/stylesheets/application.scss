@@ -71,60 +71,60 @@ footer {
   background-color: #343A40;
 }
 
-// // topのスライダーコンテナ
-// .slider-container {
-//   position: relative;
-//   text-align: center;
-//   overflow: hidden;
-//   padding: 0;
-//   max-width: 700px;
-//   margin: 0 auto;
-// }
+// topのスライダーコンテナ
+.slider-container{
+  position: relative;
+  text-align: center;
+  overflow: hidden;
+  padding: 0;
+  max-width: 700px;
+  margin: 0 auto;
+}
 
-// // Top画像コンテナ
-// .images {
-//   width: 100%;
-//   height: auto;
-//   background-color: #012B28;
-//   padding: 20px;
-//   margin: auto;
-//   border-radius: 5px;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-// }
-// // Top画像
-// .images img {
-//   object-fit: cover;
-//   width: 100%;
-//   height: 100%;
-//   border-radius: 5px;
-// }
+// Top画像コンテナ
+.slider image .slider2 {
+  width: 100%;
+  height: auto;
+  background-color: #012B28;
+  padding: 20px;
+  margin: auto;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+// Top画像
+.images img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+}
 
-// // topのテキストオーバーレイ
-// .text-overlay {
-//   position: absolute;
-//   top: 50%;
-//   left: 50%;
-//   transform: translate(-50%, -50%);
-//   background-color: #000000b8;
-//   color: white;
-//   padding: 10px 20px;
-//   border-radius: 5px;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-// }
+// topのテキストオーバーレイ
+.text-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #000000b8;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-// // スライダーテキスト
-// .slider-text {
-//   max-width: 100%;
-//   margin: 0 auto;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   font-size: 16px;
-// }
+// スライダーテキスト
+.slider-text .slider2{
+  max-width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+}
 
 // // メディアクエリ（スマートフォン用）
 // @media (max-width: 767px) {
@@ -506,3 +506,254 @@ footer {
 // 	user-select: none;
 // }
 // }
+/* 新着商品スライドショー */
+.slider {
+  width: 94%;
+  margin: 0 auto; /* スライドショーを水平方向に中央に配置 */
+}
+
+.slider img {
+  width: 300px;
+  height: 200px;
+}
+
+.slider .slick-slide {
+  transform: scale(0.8); /* スライドを0.8倍に縮小 */
+  transition: all 0.5s; /* スライドの切り替えアニメーション。0.5秒に指定。 */
+  opacity: 0.5; /* スライドの透明度を0.5に設定 */
+}
+
+.slider .slick-slide.slick-center {
+  transform: scale(1);/* 中央にきたメインスライドが通常サイズに拡大 */
+  opacity: 1; /* スライドの透明度を1に設定し透明じゃなくする */
+}
+
+
+/* 新着商品リスト装飾 */
+/* 各スライドの背景色を設定し、余白と角丸を追加して装飾する */
+.slider li {
+  background-color: #FFF6DB;
+  padding: 10px; /* スライドの内側の余白を追加 */
+  border-radius: 10px; /* スライドの角を丸くします */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* スライドに影を追加して立体感を出す */
+  text-align: center; /* スライド内のテキストを中央揃えにします */
+}
+
+/* 各スライド内の段落要素（<p>タグ）の上下の余白を追加 */
+.slider li p {
+  margin: 5px 0;
+}
+
+/* スライド内の見出し（<p class="caption">タグ）のスタイルを設定 */
+.slider li p.caption {
+  font-family: 'Sawarabi Mincho', sans-serif;
+  font-size: 16px;
+  color: #FF1493;
+  font-weight: bold;
+}
+
+/* 前へボタンと次へボタンのスタイルを設定 */
+.slick-prev,
+.slick-next {
+  position: absolute; /* ボタンをスライド内に絶対位置で配置 */
+  top: 42%; /* ボタンを垂直方向に中央に配置 */
+  cursor: pointer; /* マウスカーソルをポインターに変更 */
+  outline: none; /* ボタンにフォーカスしたときの枠を非表示にする */
+  border-top: 2px solid #666;
+  border-right: 2px solid #666;
+  height: 15px;
+  width: 15px;
+}
+
+/* 前へボタンのスタイルを設定 */
+.slick-prev {
+  left: -1.5%; /* ボタンを水平方向にスライドの外側に配置 */
+  transform: rotate(-135deg); /* ボタンを反時計回りに45度回転させて矢印の形状にする */
+}
+
+/* 次へボタンのスタイルを設定 */
+.slick-next {
+  right: -1.5%; /* ボタンを水平方向にスライドの外側に配置 */
+  transform: rotate(45deg); /* ボタンを時計回りに45度回転させて矢印の形状にする */
+}
+
+/* Dots */
+.slick-dotted.slick-slider
+{
+    margin-bottom: 30px;
+}
+
+.slick-dots
+{
+    bottom: -25px;
+
+    display: block;
+
+    width: 100%;
+    padding: 0;
+    margin: 0;
+
+    list-style: none;
+
+    text-align: center;
+}
+.slick-dots li
+{
+    position: relative;
+
+    display: inline-block;
+
+    width: 20px;
+    height: 20px;
+    margin: 0 5px;
+    padding: 0;
+
+    cursor: pointer;
+}
+.slick-dots li button
+{
+    font-size: 0;
+    line-height: 0;
+
+    display: block;
+
+    width: 20px;
+    height: 20px;
+    padding: 5px;
+
+    cursor: pointer;
+
+    color: transparent;
+    border: 0;
+    outline: none;
+    background: transparent;
+}
+.slick-dots li button:hover,
+.slick-dots li button:focus
+{
+    outline: none;
+}
+.slick-dots li button:hover:before,
+.slick-dots li button:focus:before
+{
+    opacity: 1;
+}
+.slick-dots li button:before
+{
+    font-family: 'slick';
+    font-size: 20px;
+    line-height: 20px;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 20px;
+    height: 20px;
+
+    content: '•';
+    text-align: center;
+
+    opacity: .25;
+    color: black;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.slick-dots li.slick-active button:before
+{
+    opacity: .75;
+    color: black;
+}
+
+
+/* 新着商品スライドショー */
+.slider2 {
+  width: 94%;
+  margin: 0 auto; /* スライドショーを水平方向に中央に配置 */
+}
+
+.slider2 img {
+  width: 600px;
+  height: 400px;
+}
+
+.slider2 .slick-slide {
+  transform: scale(0.8); /* スライドを0.8倍に縮小 */
+  transition: all 0.5s; /* スライドの切り替えアニメーション。0.5秒に指定。 */
+  opacity: 0.5; /* スライドの透明度を0.5に設定 */
+}
+
+.slider2 .slick-slide.slick-center {
+  transform: scale(1);/* 中央にきたメインスライドが通常サイズに拡大 */
+  opacity: 1; /* スライドの透明度を1に設定し透明じゃなくする */
+}
+
+
+/* 新着商品リスト装飾 */
+/* 各スライドの背景色を設定し、余白と角丸を追加して装飾する */
+.slider2 li {
+  background-color: #FFF6DB;
+  padding: 10px; /* スライドの内側の余白を追加 */
+  border-radius: 10px; /* スライドの角を丸くします */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* スライドに影を追加して立体感を出す */
+  text-align: center; /* スライド内のテキストを中央揃えにします */
+}
+
+/* 各スライド内の段落要素（<p>タグ）の上下の余白を追加 */
+.slider2 li p {
+  margin: 5px 0;
+}
+
+/* スライド内の見出し（<p class="caption">タグ）のスタイルを設定 */
+.slider2 li p.caption {
+  font-family: 'Sawarabi Mincho', sans-serif;
+  font-size: 16px;
+  color: #FF1493;
+  font-weight: bold;
+}
+
+.slider3 {
+  width: 94%;
+  margin: 0 auto; /* スライドショーを水平方向に中央に配置 */
+}
+
+.slider3 img {
+  width: 300px;
+  height: 200px;
+}
+
+.slider3 .slick-slide {
+  transform: scale(0.8); /* スライドを0.8倍に縮小 */
+  transition: all 0.5s; /* スライドの切り替えアニメーション。0.5秒に指定。 */
+  opacity: 0.5; /* スライドの透明度を0.5に設定 */
+}
+
+.slider3 .slick-slide.slick-center {
+  transform: scale(1);/* 中央にきたメインスライドが通常サイズに拡大 */
+  opacity: 1; /* スライドの透明度を1に設定し透明じゃなくする */
+}
+
+
+/* 新着商品リスト装飾 */
+/* 各スライドの背景色を設定し、余白と角丸を追加して装飾する */
+.slider3 li {
+  background-color: #FFF6DB;
+  padding: 10px; /* スライドの内側の余白を追加 */
+  border-radius: 10px; /* スライドの角を丸くします */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* スライドに影を追加して立体感を出す */
+  text-align: center; /* スライド内のテキストを中央揃えにします */
+}
+
+/* 各スライド内の段落要素（<p>タグ）の上下の余白を追加 */
+.slider3 li p {
+  margin: 5px 0;
+}
+
+/* スライド内の見出し（<p class="caption">タグ）のスタイルを設定 */
+.slider3 li p.caption {
+  font-family: 'Sawarabi Mincho', sans-serif;
+  font-size: 16px;
+  color: #FF1493;
+  font-weight: bold;
+}

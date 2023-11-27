@@ -1,70 +1,38 @@
 <div class="container">
   <div class="row pt-5">
-    <div class="col-md-3">
-      <table class="table text-center table-hover">
-  <thead class="table-bordered">
-    <tr>
-      <th class="h4">ジャンルから選ぶ</th>
-    </tr>
-  </thead>
-  <% @genre.each do |genre| %>
-  <tr>
-    <td>
-      <%= link_to customers_genre_path(genre.id), method: :get, class: "text-dark" do %>
-      <%= genre.name %>
-      <% end %>
-    </td>
-  </tr>
-  <% end %>
-</table>
-      <table class="table text-center table-hover">
-  <thead class="table-bordered">
-    <tr>
-      <th class="h4">生産地から選ぶ</th>
-    </tr>
-  </thead>
-  <% @producing_area.each do |producing_area| %>
-  <tr>
-    <td>
-      <%= link_to customers_producingarea_path(producing_area.id), method: :get, class: "text-dark" do %>
-      <%= producing_area.name %>
-      <% end %>
-    </td>
-  </tr>
-  <% end %>
-</table>
-    </div>
+    <%= render 'public/genres/genre' %>
     <div class="col-9 col-md-9 mt-4 mx-auto">
       <div class="row align-items-center">
         <div class="col-md-12 mb-3">
-          <h3><strong>商品一覧</strong></h3><h4 class="mt-1">(全<%= @items_all.count %>件)</h4>
+          <h3><strong>商品一覧</strong></h3>
+          <h4 class="mt-1">(全<%= @items_all.count %>件)</h4>
         </div>
       </div>
 
       <div class="container">
-<div class="row">
-  <% @items.each do |item| %>
-    <div class="col-md-3 col-sm-6 mb-4 d-flex">
-      <%= link_to item_path(item), class: 'text-dark', style: "text-decoration: none;" do %>
-        <div class="card mb-3">
-          <div class='card-image'>
-            <%= image_tag item.get_item_image(300, 300), class: "card-img-top" %>
-          </div>
-          <div class="card-body">
-            <h5 class="card-title"><%= item.name %></h5>
-            <%= render "public/favorites/btn", item: item %>
-            <% if item.is_active == true %>
-              <% tax_include = (item.non_taxed_price * 1.1).floor %>
-              <p class="card-text">¥<%= tax_include %> <small class="text-muted custom_font">(税込)</small></p>
-            <% else %>
-              <p class='card-text text-danger'>販売停止中</p>
-            <% end %>
-          </div>
+        <div class="row">
+          <% @items.each do |item| %>
+            <div class="col-md-3 col-sm-6 mb-4 d-flex">
+              <%= link_to item_path(item), class: 'text-dark', style: "text-decoration: none;" do %>
+                <div class="card mb-3">
+                  <div class='card-image'>
+                    <%= image_tag item.get_item_image(300, 300), class: "card-img-top" %>
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title"><%= item.name %></h5>
+                    <div id="favorite_buttons_<%= item.id %>"><%= render "public/favorites/btn", item: item %></div>
+                    <% if item.is_active == true %>
+                      <% tax_include = (item.non_taxed_price * 1.1).floor %>
+                      <p class="card-text">¥<%= tax_include %> <small class="text-muted custom_font">(税込)</small></p>
+                    <% else %>
+                      <p class='card-text text-danger'>販売停止中</p>
+                    <% end %>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
         </div>
-      <% end %>
-    </div>
-  <% end %>
-</div>
       </div>
     </div>
   </div>

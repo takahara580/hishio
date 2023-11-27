@@ -1,27 +1,62 @@
-<div class='container'>
- <div class="row">
-  <div class="col-xs-9">
-   <p>ようこそ、ながのCAKEへ！</p><br>
-   <p>このサイトは、ケーキ販売のECサイトになります。</p><br>
-   <p>会員ではない方も商品の閲覧はできますが、</p><br>
-   <p>購入には会員登録が必要になります。</p><br>
-   <div class="row item-card">
-    <h3>新着商品</h3>
-    <% @items.each do |item| %>
- 　　<%= link_to item_path(item.id) do %>
-    <div class="thumbnail item-thumbnail col-xs-2">
-     <%= image_tag item.item_image, size: '300x200' %>
-     <div class="item detail">
-      <p><%= item.name %></p>
-      <p><%= "#{item.non_taxed_price}円" %></p>
-      <% if item.is_active == false %>
-      <p class="item-sales-status">売り切れ</p>
-      <% end %>
-     </div>
+<div class="container mt-5" id="container">
+  <div class="row">
+    <div class="col-12 col-md-10">
+      <ul class="slider2">
+        <li><%= image_tag 'top1.jpg', alt: "Image Alt Text" %></li>
+        <li><%= image_tag 'top2.jpg', alt: "Image Alt Text" %></li>
+        <li><%= image_tag 'top3.jpg', alt: "Image Alt Text" %></li>
+        <li><%= image_tag 'top4.jpg', alt: "Image Alt Text" %></li>
+      </ul>
+      <div class="text-overlay" style='width: 500px; height: 250px;'>
+        <p class="slider-text" style='width: 400px; height: 200px;'>
+          ようこそ、ながのCAKEへ！<br>
+          このサイトは、ケーキ販売のECサイトになります。<br>
+          会員でない方も商品の閲覧はできますが、<br>
+          購入には会員登録が必要になります。
+        </p>
+      </div>
     </div>
-    <% end %>
-    <% end %>
-   </div>
-   <p style="text-align: right;"><%= link_to '全ての商品を見る＞', items_path %></p>
+    <%= render 'public/genres/genre' %>
+    <div class="col-9">
+      <div class="mt-5">
+        <h3><strong>新着商品</strong></h3>
+        <div class="row mt-4">
+          <ul class="slider">
+            <% @new_items.each do |item| %>
+              <li>
+                <%= link_to item_path(item) do %>
+                  <p class="caption mx-2"><%= image_tag item.item_image, size: '300x200' %></p>
+                <% end %>
+                <p><%= item.name %></p>
+                <p>¥<%= item.with_tax_price.to_s(:delimited) %></p>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+        <p class="text-center mt-5">
+          <%= link_to 'すべての商品を見る', items_path, class: "link" %>
+        </p>
+      </div>
+      <div class="mt-5">
+        <h3><strong>いいねランキング</strong></h3>
+        <div class="row mt-4">
+          <ul class="slider">
+            <% @top_items.each do |item| %>
+              <li>
+                <%= link_to item_path(item) do %>
+                  <p class="caption mx-2"><%= image_tag item.item_image, size: '300x200' %></p>
+                <% end %>
+                <p><%= item.name %></p>
+                <p>¥<%= item.with_tax_price.to_s(:delimited) %></p>
+                <p><%= item.favorites.count %> いいね</p>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+        <p class="text-center mt-5">
+          <%= link_to 'すべての商品を見る', items_path, class: "link" %>
+        </p>
+      </div>
+    </div>
   </div>
- </div>
+</div>

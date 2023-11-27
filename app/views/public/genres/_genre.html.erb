@@ -1,0 +1,35 @@
+<div class="col-md-3 text-center">
+  <%= link_to "選び方を見る", homes_about_path, class: "btn btn-secondary text-center", style: "width: 150px;" %>
+  <table class="table text-center table-hover bg-light">
+    <thead class="table-bordered bg-secondary">
+      <tr>
+        <th class="h4">ジャンルから選ぶ</th>
+      </tr>
+    </thead>
+    <% @genre.each do |genre| %>
+      <tr>
+        <td>
+          <%= link_to customers_genre_path(genre.id), method: :get, class: "text-dark" do %>
+            <%= genre.name %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+  <table class="table text-center table-hover bg-light">
+    <thead class="table-bordered bg-secondary">
+      <tr>
+        <th class="h4">生産地から選ぶ</th>
+      </tr>
+    </thead>
+    <% @producing_area.each do |producing_area| %>
+      <tr>
+        <td>
+          <%= link_to customers_producingarea_path(producing_area.id), method: :get, class: "text-dark" do %>
+            <%= producing_area.name %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>

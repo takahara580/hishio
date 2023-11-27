@@ -34,6 +34,7 @@ scope module: :public do
     get :search, on: :collection
     get :search_name, on: :collection
     resource :favorites, only: [:create, :destroy] 
+    resources :item_comments, only: [:create, :destroy]
   end
   resources :items, only: [:index, :show]
   get '/customers/information' => 'customers#show'
