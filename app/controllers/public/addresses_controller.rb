@@ -17,7 +17,7 @@ class Public::AddressesController < ApplicationController
       flash[:success] = '配送先を登録しました'
       redirect_to addresses_path
     else
-      flash[:danger] = '必要情報を入力してください/ハイフンは使用できません'
+      flash[:danger] = '必要情報を入力してください/郵便番号はハイフンを使わず7文字で入力してください。'
       render "index"
     end
   end
@@ -29,7 +29,7 @@ class Public::AddressesController < ApplicationController
       flash[:success] = "配送先の変更内容を保存しました。"
       redirect_to addresses_path
     else
-      flash[:danger] = "配送先の変更内容に不備があります。"
+      flash[:danger] = "配送先の変更内容に不備があります/郵便番号はハイフンを使わず7文字で入力してください。"
       redirect_to addresses_path
     end
   end

@@ -36,7 +36,7 @@ class Public::OrdersController < ApplicationController
       end
     elsif params[:order][:address_option] == "2"
       if params[:order][:zip_code].blank? || params[:order][:address].blank? || params[:order][:name].blank?
-        flash[:danger] = "新しいお届け先の情報をすべて入力してください。"
+        flash[:danger] = "新しいお届け先の情報をすべて入力してください/郵便番号はハイフンを使わず7文字で入力してください。"
         redirect_to cart_items_path
         return
       else

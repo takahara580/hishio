@@ -10,7 +10,7 @@ class Admin::CustomersController < ApplicationController
       flash[:success] = "会員情報の変更内容を保存しました。"
       redirect_to '/admin/customers'
     else
-      flash[:danger] = "会員情報の変更内容に不備があります。"
+      flash[:danger] = "会員情報の変更内容に不備があります/郵便番号はハイフンを使わず7文字で入力してください。"
       render "edit"
     end
   end

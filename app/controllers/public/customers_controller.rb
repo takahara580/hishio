@@ -17,7 +17,7 @@ class Public::CustomersController < ApplicationController
       flash[:success] = "会員情報を更新しました。"
       redirect_to customers_information_path
     else
-      flash[:danger] = "必要項目を記入してください。"
+      flash[:danger] = "必要項目を記入してください。/郵便番号はハイフンを使わず7文字で入力してください。"
       render "edit"
     end
   end
