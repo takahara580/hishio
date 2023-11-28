@@ -2,7 +2,7 @@
   <% @item.item_comments.each do |item_comment| %>
     <p>
       <%= item_comment.customer.last_name %>　<%= item_comment.customer.first_name %>
-      <%= item_comment.created_at.strftime('%Y/%m/%d') %>
+      <%= item_comment.created_at.strftime('%Y/%m/%d %H:%M') %>
     </p>
     <p><%= item_comment.comment %></p>
     <p><%= link_to "削除",  admin_item_item_comment_path(@item, item_comment), class: 'text-right', method: :delete, remote:true, data: {"turbolinks" => false} %></p>

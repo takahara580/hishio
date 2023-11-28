@@ -21,6 +21,8 @@ class Public::ProducingAreasController < ApplicationController
       items.order(created_at: :asc)
     when 'latest'
       items.order(created_at: :desc)
+    when 'active'
+      items.where(is_active: true).order(created_at: :desc)
     else
       items
     end

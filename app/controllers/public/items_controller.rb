@@ -10,6 +10,8 @@ class Public::ItemsController < ApplicationController
                    .per(12)
     when "old"
       @items = Item.order(created_at: :asc).page(params[:page]).per(12)
+    when "active"
+      @items = Item.where(is_active: true).order(created_at: :desc).page(params[:page]).per(12)
     else 
       @items = Item.order(created_at: :desc).page(params[:page]).per(12)
     end

@@ -7,7 +7,8 @@
           <h3><strong>商品一覧</strong></h3>
           <%= link_to 'いいね順', items_path(sort_by: 'popular'), class: 'btn btn-secondary' %> |
           <%= link_to '新着順', items_path(sort_by: 'latest'), class: 'btn btn-secondary' %> |
-          <%= link_to '古い順', items_path(sort_by: 'old'), class: 'btn btn-secondary' %>
+          <%= link_to '古い順', items_path(sort_by: 'old'), class: 'btn btn-secondary' %> |
+          <%= link_to '販売中', items_path(sort_by: 'active'), class: 'btn btn-secondary' %>
           <h4 class="mt-1">(全<%= @items_all.count %>件)</h4>
         </div>
       </div>

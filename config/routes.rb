@@ -16,7 +16,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   namespace :admin do
   root 'homes#top'
   get "search" => "searches#search"
-  resources :items, only: [:index, :new, :create, :show, :edit, :update] do
+  resources :items, only: [:index, :new, :create, :show, :edit, :update, :destroy] do
     resources :item_comments, only: [:destroy]
   end
   resources :genres, only: [:index, :create, :edit, :update,]

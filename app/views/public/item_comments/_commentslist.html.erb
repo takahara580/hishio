@@ -2,7 +2,7 @@
   <% @item.item_comments.each do |item_comment| %>
     <p>
       <%= item_comment.customer.last_name %>　<%= item_comment.customer.first_name %>
-      <%= item_comment.created_at.strftime('%Y/%m/%d') %>
+      <%= item_comment.created_at.strftime('%Y/%m/%d %H:%M') %>
     </p>
     <%= item_comment.comment %>
     <% if item_comment.customer == current_customer %>

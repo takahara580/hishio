@@ -43,7 +43,8 @@
           <h3><strong><%= @genre.name %>一覧</strong></h3>
           <%= link_to 'いいね順', customers_genre_path(@genre, sort_type: 'popular'), class: 'btn btn-secondary' %> |
           <%= link_to '新着順', customers_genre_path(@genre, sort_type: 'latest'), class: 'btn btn-secondary' %> |
-          <%= link_to '古い順', customers_genre_path(@genre, sort_type: 'old'), class: 'btn btn-secondary' %>
+          <%= link_to '古い順', customers_genre_path(@genre, sort_type: 'old'), class: 'btn btn-secondary' %> |
+          <%= link_to '販売中', customers_genre_path(@genre, sort_type: 'active'), class: 'btn btn-secondary' %>
         </div>
       </div>
 
