@@ -1,4 +1,14 @@
 <div class="container mt-5" id="container">
+  <% if flash[:success] %>
+    <div class="alert alert-success">
+      <%= flash[:success] %>
+    </div>
+  <% elsif flash[:danger] %>
+    <div class="alert alert-danger">
+      <%= flash[:danger] %>
+    </div>
+  <% end %>
+  
   <div class="row">
     <div class="col-12 col-md-10">
       <ul class="slider2">
@@ -8,11 +18,11 @@
         <li><%= image_tag 'top4.jpg', alt: "Image Alt Text" %></li>
       </ul>
       <div class="text-overlay" style='width: 500px; height: 250px;'>
+         <h4>Hishio - 懐かしの味、新しい発見</h4>
         <p class="slider-text" style='width: 400px; height: 200px;'>
-          ようこそ、ながのCAKEへ！<br>
-          このサイトは、ケーキ販売のECサイトになります。<br>
-          会員でない方も商品の閲覧はできますが、<br>
-          購入には会員登録が必要になります。
+          いらっしゃいませ、Hishioへようこそ！<br>
+          Hishioは、味噌と醤油が創り出す日本の伝統的な風味をお手元にお届けします。<br>
+          懐かしい地元の味を楽しみたい方、新しい味を発見したい方へなど様々な人へ。購入には会員登録が必要になります。
         </p>
       </div>
     </div>

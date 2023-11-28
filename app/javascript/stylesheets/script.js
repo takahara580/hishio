@@ -35,7 +35,6 @@ nextArrow: '<div class="slick-next"></div>',
     centerMode: true,
     
 variableWidth: true,
-    dots: true,
   });
 });
 

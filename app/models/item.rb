@@ -4,6 +4,12 @@ class Item < ApplicationRecord
   belongs_to :producing_area
   has_many :favorites, dependent: :destroy
   has_many :item_comments, dependent: :destroy
+  
+  validates :name, presence: true
+  validates :text, presence: true
+  validates :non_taxed_price, presence: true, numericality: true
+  validates :is_active, inclusion: { in: [true, false] }
+  
   def self.search_for(content)
     Item.where("name LIKE?","%#{content}%")
   end

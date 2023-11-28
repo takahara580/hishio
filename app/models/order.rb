@@ -8,5 +8,9 @@ class Order < ApplicationRecord
   def subtotal
     non_taxed_price * amount
   end
+  
+  validates :zip_code, presence: true
+  validates :address, presence: true
+  validates :name, presence: true
 
 end

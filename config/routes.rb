@@ -16,16 +16,16 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   namespace :admin do
   root 'homes#top'
   get "search" => "searches#search"
-  resources :items, only: [:index, :new, :create, :show, :edit, :update]
+  resources :items, only: [:index, :new, :create, :show, :edit, :update] do
+    resources :item_comments, only: [:destroy]
+  end
   resources :genres, only: [:index, :create, :edit, :update,]
   resources :producing_areas, only: [:index, :create, :edit, :update,]
   resources :customers, only: [:index, :show, :edit, :update]
   resources :orders, only: [:show, :update]
   resources :order_details, only: [:update]
-  # resource :genres, only: [:create, :edit]
 end
 
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
 scope module: :public do
   root to: 'homes#top'
@@ -58,7 +58,4 @@ scope module: :public do
     resources :producing_areas, only: [:show], as: "customers_producingareas", path: "customers/producing_area"
   end
   
-
-
-
 end

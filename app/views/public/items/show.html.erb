@@ -31,33 +31,12 @@
           </div>
         </div>
         <div class="col-8 text-center mx-auto mt-5">
-          <% if current_customer %>
-            <div>
-              <%= form_with model: [@item, @item_comment], url: item_item_comments_path(@item) do |f| %>
-                <%= f.text_field :comment, rows: '5', class: 'form-control', placeholder: "コメントをここに" %>
-                <%= f.submit "送信する" %>
-              <% end %>
-            </div>
-          <% else %>
-            <p>コメントを投稿するにはログインが必要です。</p>
-          <% end %>
+        <div id="comment-form"><%= render 'public/item_comments/form' %></div>
         </div>
         <div class="col-8 mx-auto">
           <div>
-            <p>コメント件数：<%= @item.item_comments.count %></p>
-            <div class="d-flex flex-column" style="height: 200px;">
-              <% @item.item_comments.each do |item_comment| %>
-                <p>
-                  <%= item_comment.customer.last_name %>　<%= item_comment.customer.first_name %>
-                  <%= item_comment.created_at.strftime('%Y/%m/%d') %>
-                </p>
-                <%= item_comment.comment %>
-
-                <% if item_comment.customer == current_customer %>
-                  <%= link_to "削除", item_item_comment_path(@item, item_comment), class: 'text-right', method: :delete %>
-                <% end %>
-              <% end %>
-            </div>
+            <p>コメント件数：<span id="comment_count"><%= @item.item_comments.count %></span></p>
+            <div id="item-comments"><%= render 'public/item_comments/commentslist' %></div>
           </div>
         </div>
       </div>

@@ -1,5 +1,6 @@
 <div class="container">
   <div class="row pt-5">
+    
     <div class="col-md-3 text-center">
       <%= link_to "選び方を見る", homes_about_path, class: "btn btn-secondary text-center", style: "width: 150px;" %>
       <table class="table text-center table-hover bg-light">
@@ -35,16 +36,25 @@
         <% end %>
       </table>
     </div>
+    
     <div class="col-9 col-md-9 mt-4 mx-auto">
       <div class="row align-items-center">
         <div class="col-md-12 mb-3">
           <h3><strong><%= @producing_area.name %>一覧</strong></h3>
+          <%= link_to 'いいね順', customers_producingarea_path(@producing_area, sort_type: 'popular'), class: 'btn btn-secondary' %> |
+          <%= link_to '新着順', customers_producingarea_path(@producing_area, sort_type: 'latest'), class: 'btn btn-secondary' %> |
+          <%= link_to '古い順', customers_producingarea_path(@producing_area, sort_type: 'old'), class: 'btn btn-secondary' %>
         </div>
       </div>
 
       <div class="container">
         <div class="row">
-          <% @producing_area.items.each do |item| %>
+          <% if @producing_area_items.empty? %>
+            <div class="text-center" style="margin: 30px;">
+              <p style="color: red;">該当する商品はありません</p>
+            </div>
+          <% end %>
+          <% @producing_area_items.each do |item| %>
             <div class="col-md-3 col-sm-6 mb-4 d-flex">
               <%= link_to item_path(item), class: 'text-dark', style: "text-decoration: none;" do %>
                 <div class="card mb-3">
@@ -53,7 +63,7 @@
                   </div>
                   <div class="card-body">
                     <h5 class="card-title"><%= item.name %></h5>
-                    <%= render "public/favorites/btn", item: item %>
+                    <div id="favorite_buttons_<%= item.id %>"><%= render "public/favorites/btn", item: item %></div>
                     <% if item.is_active == true %>
                       <% tax_include = (item.non_taxed_price * 1.1).floor %>
                       <p class="card-text">¥<%= tax_include %> <small class="text-muted custom_font">(税込)</small></p>

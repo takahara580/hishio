@@ -36,4 +36,4 @@ before_action :authenticate_customer!, if: :customer_url
 #     devise_parameter_sanitizer.permit(:account_update, keys:[:email, :phone_number, :zip_code, :address, :first_name_kana, :last_name_kana, :first_name, :last_name])
 #   end
 
- end
+end

@@ -22,12 +22,13 @@
           <% @records.each do |item| %>
             <div class="col-md-3 col-sm-6 mb-4 d-flex">
               <%= link_to item_path(item), class: 'text-dark', style: "text-decoration: none;" do %>
-                <div class="card ml-5" style="width: 11rem;">
+                <div class="card mb-3">
                   <div class='card-image'>
                     <%= image_tag item.get_item_image(300, 300), class: "card-img-top" %>
                   </div>
                   <div class="card-body">
-                    <h5 class="card-title text-truncate"><%= item.name %></h5>
+                    <h5 class="card-title"><%= item.name %></h5>
+                    <div id="favorite_buttons_<%= item.id %>"><%= render "public/favorites/btn", item: item %></div>
                     <% if item.is_active == true %>
                       <% tax_include = (item.non_taxed_price * 1.1).floor %>
                       <p class="card-text">¥<%= tax_include %> <small class="text-muted custom_font">(税込)</small></p>

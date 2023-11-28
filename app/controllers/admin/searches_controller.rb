@@ -4,10 +4,10 @@ class Admin::SearchesController < ApplicationController
 
     if @range == '会員'
       @content = params[:content]
-      @records = Customer.search_for(@content).page(params[:page])
+      @records = Customer.search_for(@content).page(params[:page]).per(15)
     else
       @content = params[:content]
-      @records = Item.search_for(@content).page(params[:page])
+      @records = Item.search_for(@content).page(params[:page]).per(15)
     end
   end
 

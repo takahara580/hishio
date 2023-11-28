@@ -1,4 +1,14 @@
 <div class="container px-sm-0 px-5" >
+  <% if flash[:success] %>
+    <div class="alert alert-success">
+      <%= flash[:success] %>
+    </div>
+  <% elsif flash[:danger] %>
+    <div class="alert alert-danger">
+      <%= flash[:danger] %>
+    </div>
+  <% end %>
+  
   <div class="row my-4">
     <h3>ジャンル編集</h3>
   </div>

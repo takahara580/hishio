@@ -30,7 +30,7 @@
           <tr>
             <td>配送先</td>
             <td>
-              〒<%= @order.zip_code.to_s.insert(3, "-") %>
+              〒<%= @order.zip_code %>
               <%= @order.address %></br>
               <%= @order.name %>
             </td>

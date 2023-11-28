@@ -10,9 +10,23 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    build_resource(sign_up_params)
+
+    resource.save
+    yield resource if block_given?
+
+    if resource.persisted?
+      set_flash_message! :success, :signed_up
+      sign_up(resource_name, resource)
+      respond_with resource, location: after_sign_up_path_for(resource)
+    else
+      clean_up_passwords resource
+      set_minimum_password_length
+      flash[:danger] = resource.errors.full_messages.join("\n")
+      redirect_to new_customer_registration_path
+    end
+  end
 
   # GET /resource/edit
   # def edit

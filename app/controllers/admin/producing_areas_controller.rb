@@ -10,8 +10,10 @@ class Admin::ProducingAreasController < ApplicationController
     @producing_areas = ProducingArea.all
     @producing_area = ProducingArea.new(producing_area_params)
     if @producing_area.save
+      flash[:success] = "生産地を保存しました。"
       redirect_to admin_producing_areas_path
     else
+      flash[:danger] = "生産地を入力してください"
       render :index
     end
   end
@@ -23,9 +25,11 @@ class Admin::ProducingAreasController < ApplicationController
   def update
     @producing_area = ProducingArea.find(params[:id])
     if @producing_area.update(producing_area_params)
+      flash[:success] = "生産地を変更しました。"
       redirect_to admin_producing_areas_path
     else
-      render :edit
+      flash[:danger] = "生産地を入力してください。"
+      redirect_to admin_producing_areas_path
     end
   end
 

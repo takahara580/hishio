@@ -1,0 +1,2 @@
+$('#item-comments').html("<%= j(render 'admin/item_comments/commentslist', item: @item) %>");
+$('#comment_count').html("<%= @item.item_comments.count %>")

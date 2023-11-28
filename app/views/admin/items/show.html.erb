@@ -1,4 +1,14 @@
 <div class="container px-5 px-sm-0">
+  <% if flash[:success] %>
+    <div class="alert alert-success">
+      <%= flash[:success] %>
+    </div>
+  <% elsif flash[:danger] %>
+    <div class="alert alert-danger">
+      <%= flash[:danger] %>
+    </div>
+  <% end %>
+  
   <div class="row my-4">
     <div class="col-12">
       <h2>商品詳細</h2>
@@ -55,18 +65,9 @@
     </div>
 <div class="col-8 mx-auto">
   <div>
-    <p>コメント件数：<%= @item.item_comments.count %></p>
+    <p>コメント件数：<span id="comment_count"><%= @item.item_comments.count %></span></p>
     <div class="d-flex flex-column" style="height: 200px;">
-<% @item.item_comments.each do |item_comment| %>
-  <p>
-    <%= item_comment.customer.last_name %>　<%= item_comment.customer.first_name %>
-    <%= item_comment.created_at.strftime('%Y/%m/%d') %>
-  </p>
-  <%= item_comment.comment %>
-
-    <%= link_to "削除", item_item_comment_path(@item, item_comment), class: 'text-right', method: :delete %>
-<% end %>
-    </div>
+<div id="item-comments"><%= render 'admin/item_comments/commentslist' %></div>
   </div>
   
 </div>

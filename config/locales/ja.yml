@@ -39,11 +39,13 @@ ja:
         first_name_kana: '名前（カナ）'
         email: 'メールアドレス'
         postal_code: '郵便番号'
-        telephone_number: '電話番号'
+        phone_number: '電話番号'
         address: '住所'
+        password: "パスワード"
+        zip_code: '郵便番号'
       address:
         name: '配送先宛名'
-        postal_code: '郵便番号'
+        zip_code: '郵便番号'
         address: '配送先住所'
       cart_item:
         amount: '個数'

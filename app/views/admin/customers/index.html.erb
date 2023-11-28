@@ -1,4 +1,14 @@
 <div class="container px-sm-0 px-5" >
+  <% if flash[:success] %>
+    <div class="alert alert-success">
+      <%= flash[:success] %>
+    </div>
+  <% elsif flash[:danger] %>
+    <div class="alert alert-danger">
+      <%= flash[:danger] %>
+    </div>
+  <% end %>
+  
   <div class="row my-4">
     <h3>会員一覧</h3>
   </div>
@@ -33,5 +43,10 @@
 </table>
 
 
+<div class='container'>
+  <div class="d-flex justify-content-center">
+    <div class="mx-auto">
+      <%= paginate @customers %>
+    </div>
   </div>
 </div>

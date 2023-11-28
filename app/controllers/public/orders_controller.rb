@@ -20,11 +20,11 @@ class Public::OrdersController < ApplicationController
   # @oreder_total_amount = @total_amount + @order.postage.to_i
 
 
-   if params[:order][:address_option] == "0"
+    if params[:order][:address_option] == "0"
       @order.zip_code = current_customer.zip_code
       @order.address = current_customer.address
       @order.name = current_customer.last_name + current_customer.first_name
-   elsif params[:order][:address_option] == "1"
+    elsif params[:order][:address_option] == "1"
       if Address.exists?(id: params[:order][:registration_addresses])
         @address = Address.find(params[:order][:registration_addresses])
         @order.name = @address.name
@@ -34,13 +34,19 @@ class Public::OrdersController < ApplicationController
         flash[:notice] = "配送先情報がありません"
         render 'new'
       end
-   elsif params[:order][:address_option] == "2"
-      @order.name = params[:order][:name]
-      @order.zip_code = params[:order][:zip_code]
-      @order.address = params[:order][:address]
-   else
+    elsif params[:order][:address_option] == "2"
+      if params[:order][:zip_code].blank? || params[:order][:address].blank? || params[:order][:name].blank?
+        flash[:danger] = "新しいお届け先の情報をすべて入力してください。"
+        redirect_to cart_items_path
+        return
+      else
+        @order.name = params[:order][:name]
+        @order.zip_code = params[:order][:zip_code]
+        @order.address = params[:order][:address]
+      end
+    else
       render 'new'
-   end
+    end
    end
  end
 
@@ -63,7 +69,6 @@ class Public::OrdersController < ApplicationController
   def show
     @order = Order.find_by(id: params[:id], customer_id: current_customer.id)
   if @order.nil?
-    # オーダーが見つからないか、ユーザーに関連付けられていない場合の処理
     flash[:notice] = "指定されたオーダーが見つかりません"
     redirect_to cart_items_path
   else
