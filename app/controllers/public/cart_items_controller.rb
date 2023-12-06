@@ -34,8 +34,7 @@ class Public::CartItemsController < ApplicationController
   end
 
   def all_destroy
-    # @cart_items = current_customer.cart_items.all(ログイン機能ができたら追加)
-    @cart_items = CartItem.all
+    @cart_items = current_customer.cart_items.all
     @cart_items.destroy_all
     redirect_to cart_items_path
   end
