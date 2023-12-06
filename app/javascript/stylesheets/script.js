@@ -55,3 +55,4 @@ nextArrow: '<div class="slick-next"></div>',
 variableWidth: true,
   });
 });
+

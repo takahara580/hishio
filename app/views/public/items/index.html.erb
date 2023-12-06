@@ -16,7 +16,7 @@
       <div class="container">
         <div class="row">
           <% @items.each do |item| %>
-            <div class="col-md-3 col-sm-6 mb-4 d-flex">
+            <div class="col-md-3 col-sm-6 mb-4">
               <%= link_to item_path(item), class: 'text-dark', style: "text-decoration: none;" do %>
                 <div class="card mb-3">
                   <div class='card-image'>
@@ -24,7 +24,11 @@
                   </div>
                   <div class="card-body">
                     <h5 class="card-title"><%= item.name %></h5>
+                    <% if customer_signed_in? %>
                     <div id="favorite_buttons_<%= item.id %>"><%= render "public/favorites/btn", item: item %></div>
+                    <% else %>
+                    <span style="color: blue;"><i class="fas fa-heart"></i><%= item.favorites.count %>いいね</span>
+                    <% end %>
                     <% if item.is_active == true %>
                       <% tax_include = (item.non_taxed_price * 1.1).floor %>
                       <p class="card-text">¥<%= tax_include %> <small class="text-muted custom_font">(税込)</small></p>

@@ -11,7 +11,14 @@
         <div class="col-12 col-md-6 align-self-center">
           <h3 class="mb-3"><%= @item.name %></h3>
           <h5 class="mb-5"><%= @item.text %></h5>
-          <div id="favorite_buttons_<%= @item.id %>"><%= render "public/favorites/btn", item: @item %></div>
+          <% if customer_signed_in? %>
+          <div id="favorite_buttons_<%= @item.id %>">
+            <%= render "public/favorites/btn", item: @item %>
+          </div>
+          <% else %>
+          <span style="color: blue;"><i class="fas fa-heart"></i><%= @item.favorites.count %>いいね</span>
+          <p>いいねするにはログインが必要です。</p>
+          <% end %>
           <div class="d-flex align-items-center mb-4">
             <% if @item.is_active == true %>
               <h5 class="mb-0">¥<%= @item.non_taxed_price %></h5>
@@ -31,7 +38,7 @@
           </div>
         </div>
         <div class="col-8 text-center mx-auto mt-5">
-        <div id="comment-form"><%= render 'public/item_comments/form' %></div>
+          <div id="comment-form"><%= render 'public/item_comments/form' %></div>
         </div>
         <div class="col-8 mx-auto">
           <div>
