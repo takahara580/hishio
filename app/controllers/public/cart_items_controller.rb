@@ -1,12 +1,12 @@
 class Public::CartItemsController < ApplicationController
-def index
-  @cart_items = current_customer.cart_items
-  @total_price = 0
+  def index
+    @cart_items = current_customer.cart_items
+    @total_price = 0
 
-  @cart_items.each do |cart_item|
-    @total_price += cart_item.item.non_taxed_price * cart_item.amount
+    @cart_items.each do |cart_item|
+      @total_price += cart_item.item.non_taxed_price * cart_item.amount
+    end
   end
-end
 
   def create
     @cart_item = CartItem.new(cart_items_params)

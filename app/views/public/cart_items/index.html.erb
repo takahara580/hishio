@@ -27,7 +27,7 @@
       <% if @cart_items.any? %>
       <div class="col offset-md-7">
         <%= link_to all_destroy_path, class: "btn btn-danger", method: :delete do %>カートを空にする
-        <% end %>
+      <% end %>
       </div>
     </div>
 
@@ -60,9 +60,10 @@
             </tr>
           </div>
         </div>
+        
           <% end %>
         </tbody>
-    </table>
+      </table>
 
     <div class="container mt-4">
       <div class="d-flex flex-column flex-md-row align-items-center">
