@@ -19,7 +19,9 @@
  - 普段の料理とは違う風味や味を楽しみたいとき
 ​
 ## 設計書
-後ほど作成予定
+ - アプリケーション詳細設計（https://docs.google.com/spreadsheets/d/1DyGsgmt7b6iC05Tm2lYLTqw44jfnDhFecsYslg1fxxU/edit#gid=549108681）
+ - テーブル定義書（https://docs.google.com/spreadsheets/d/1zJCUgzoOlFdj8bByE7LIgTgCG_g73wxy/edit#gid=22058163）
+ - ER図
 ​
 ## 開発環境
 - OS：Linux(CentOS)
