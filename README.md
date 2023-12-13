@@ -22,6 +22,7 @@
  - アプリケーション詳細設計（https://docs.google.com/spreadsheets/d/1DyGsgmt7b6iC05Tm2lYLTqw44jfnDhFecsYslg1fxxU/edit#gid=549108681）
  - テーブル定義書（https://docs.google.com/spreadsheets/d/1zJCUgzoOlFdj8bByE7LIgTgCG_g73wxy/edit#gid=22058163）
  - ER図
+![スクリーンショット (13)](https://github.com/takahara580/hishio/assets/143938080/72f224da-91f1-40eb-91f8-196ac4648c61)
 ​
 ## 開発環境
 - OS：Linux(CentOS)
