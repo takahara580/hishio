@@ -8,32 +8,32 @@
       <%= flash[:danger] %>
     </div>
   <% end %>
-  
+
   <h4><span class="w-25 mt-5">配送先登録/一覧</span></h4>
   <%= form_with model: @address, method: :post, local: true do |f| %>
-  <div class='form-group row'>
-    <label for='zip_code' class="col-3 offset-md-2">郵便番号（ハイフンなし）</label>
-    <div class='col-sm-2'>
-      <%= f.text_field :zip_code, id: "zip_code", class: "form-control", placeholder: "0000000" %>
+    <div class='form-group row'>
+      <label for='zip_code' class="col-3 offset-md-2">郵便番号（ハイフンなし）</label>
+      <div class='col-sm-2'>
+        <%= f.text_field :zip_code, id: "zip_code", class: "form-control", placeholder: "0000000" %>
+      </div>
     </div>
-  </div>
-  <div class="form-group row">
-    <label for='address' class="col-3 offset-md-2">住所</label>
-    <div class="col-sm-4">
-      <%= f.text_field :address, id: "address", class: "form-control", placeholder: "東京都渋谷区神園町0-0" %>
+    <div class="form-group row">
+      <label for='address' class="col-3 offset-md-2">住所</label>
+      <div class="col-sm-4">
+        <%= f.text_field :address, id: "address", class: "form-control", placeholder: "東京都渋谷区神園町0-0" %>
+      </div>
     </div>
-  </div>
-  <div class="form-group row">
-    <label for='name' class="col-3 offset-md-2">宛名</label>
-    <div class="col-sm-2">
-      <%= f.text_field :name, id: "name", class: "form-control", placeholder: "令和道子" %>
+    <div class="form-group row">
+      <label for='name' class="col-3 offset-md-2">宛名</label>
+      <div class="col-sm-2">
+        <%= f.text_field :name, id: "name", class: "form-control", placeholder: "令和道子" %>
+      </div>
     </div>
-  </div>
-  <div class="form-group row">
-    <div class="col-sm-2 mb-3 mx-auto">
-      <%= f.submit '新規登録', class: 'btn btn-success btn-block' %>
+    <div class="form-group row">
+      <div class="col-sm-2 mb-3 mx-auto">
+        <%= f.submit '新規登録', class: 'btn btn-success btn-block' %>
+      </div>
     </div>
-  </div>
   <% end %>
 </div>
 

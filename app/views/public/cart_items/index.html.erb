@@ -10,13 +10,13 @@
 <body>
   <div class="container">
     <% if flash[:success] %>
-    <div class="alert alert-success">
-      <%= flash[:success] %>
-    </div>
+      <div class="alert alert-success">
+        <%= flash[:success] %>
+      </div>
     <% elsif flash[:danger] %>
-    <div class="alert alert-danger">
-      <%= flash[:danger] %>
-    </div>
+      <div class="alert alert-danger">
+        <%= flash[:danger] %>
+      </div>
     <% end %>
 
     <div class="row mt-3 justify-content-between">
@@ -25,10 +25,10 @@
       </div>
 
       <% if @cart_items.any? %>
-      <div class="col offset-md-7">
-        <%= link_to all_destroy_path, class: "btn btn-danger", method: :delete do %>カートを空にする
-      <% end %>
-      </div>
+        <div class="col offset-md-7">
+          <%= link_to all_destroy_path, class: "btn btn-danger", method: :delete do %>カートを空にする
+        <% end %>
+        </div>
     </div>
 
     <div class="row mt-3">
@@ -53,17 +53,16 @@
                 <%= form_with model: cart_item, url: cart_item_path(cart_item.id), local: true do |f| %>
                 <%= f.select :amount, *[1 ... 100] %>
                 <%= f.submit '変更', class:"btn mb-2 btn-outline-dark" %>
-                </td>
-                <td class="mx-auto border-dark" style="text-align: center;"><%= cart_item.item.non_taxed_price * cart_item.amount %>円</td>
-                <td class="mx-auto border-dark" style="text-align: center;"><%= link_to "削除する", cart_item_path(cart_item.id), class:"btn btn-danger", method: :delete %></td>
-                <% end %>
+              </td>
+              <td class="mx-auto border-dark" style="text-align: center;"><%= cart_item.item.non_taxed_price * cart_item.amount %>円</td>
+              <td class="mx-auto border-dark" style="text-align: center;"><%= link_to "削除する", cart_item_path(cart_item.id), class:"btn btn-danger", method: :delete %></td>
+            <% end %>
             </tr>
-          </div>
-        </div>
-        
           <% end %>
-        </tbody>
-      </table>
+          </tbody>
+        </table>
+      </div>
+    </div>
 
     <div class="container mt-4">
       <div class="d-flex flex-column flex-md-row align-items-center">
@@ -89,7 +88,7 @@
         <% end %>
         <% end %>
       </div>
-      <% else %>
+        <% else %>
       <div class="text-center col-12">
         <h4>カートは空です</h4>
         <div><%= link_to '買い物を続ける', root_path, class: 'btn btn-primary' %></div>
