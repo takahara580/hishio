@@ -1,5 +1,5 @@
 # Hishio
-​
+![スクリーンショット (17)](https://github.com/takahara580/hishio/assets/143938080/cb6421d0-260b-487a-83d5-fbfa55944491)
 ## サイト概要
 ### サイトテーマ
 醤油、味噌のみを扱い様々な地方ごとの味の違いなどを体験できるECサイト
@@ -22,7 +22,7 @@
  - アプリケーション詳細設計（https://docs.google.com/spreadsheets/d/1DyGsgmt7b6iC05Tm2lYLTqw44jfnDhFecsYslg1fxxU/edit#gid=549108681）
  - テーブル定義書（https://docs.google.com/spreadsheets/d/1zJCUgzoOlFdj8bByE7LIgTgCG_g73wxy/edit#gid=22058163）
  - ER図
-![スクリーンショット (13)](https://github.com/takahara580/hishio/assets/143938080/72f224da-91f1-40eb-91f8-196ac4648c61)
+![スクリーンショット (15)](https://github.com/takahara580/hishio/assets/143938080/671dec91-7d8f-456b-8b11-f2b276af5667)
 ​
 ## 開発環境
 - OS：Linux(CentOS)
